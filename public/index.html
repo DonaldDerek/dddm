@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DDDM</title>
+        <link rel="stylesheet" href="/css/style.css" media="screen" title="DDDM" charset="utf-8"/>
+    </head>
+    <body>
+        <div class="container"></div>
+
+    <script type="text/javascript">
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mainVolume = audioCtx.createGain();
+    mainVolume.connect(audioCtx.destination);
+
+    var pool = [130.8,146.8,168.4,174.6,196,220,233.1,261.6,349.2,392];
+
+    var beat = function(freq, time, sustain, type){
+        console.log("freq: %s",freq);
+        var oscillator = audioCtx.createOscillator();
+        oscillator.type = type;
+        oscillator.connect(mainVolume);
+        oscillator.frequency.value=freq;
+        oscillator.start(audioCtx.currentTime);
+        oscillator.stop(audioCtx.currentTime + (time/1000)*sustain);
+    }
+
+    var createBeat = function(BPM, freq, sustain, type){
+        var time = 60000/BPM;
+        setInterval(beat, time, freq, time, sustain, type);
+    }
+
+    </script>
+    </body>
+</html>

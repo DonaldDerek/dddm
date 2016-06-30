@@ -1,0 +1,14 @@
+{
+  "name": "DDDM",
+  "version": "1.0.0",
+  "description": "Fragile Board control unit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "author": "ddh",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
